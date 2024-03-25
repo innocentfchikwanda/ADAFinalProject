@@ -20,9 +20,9 @@ public class GreedyKnapSack {
 
         // sort options table using the ratio column in non-increasing order
         Arrays.sort(Options, Comparator.comparingDouble(col -> col[3]));
-        ArrayList<Double> choices = new ArrayList<Double>();// set the size of the choices to the size of the rows of
-                                                            // the
-        // options table
+
+        ArrayList<Double> choices = new ArrayList<Double>(1);// set the size of the choices to the size of the rows of
+                                                             // the options table
 
         double weight = 0;
         int j = this.Options.length - 1;
