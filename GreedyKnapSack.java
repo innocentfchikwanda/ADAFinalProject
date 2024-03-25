@@ -47,5 +47,6 @@ public class GreedyKnapSack {
         for (double choice : choices) {
             System.out.println(choice);
         }
+        System.out.println();
     }
 }
