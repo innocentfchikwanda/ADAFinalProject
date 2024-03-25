@@ -12,20 +12,32 @@ public class GreedyKnapSack {
     }
 
     public double[] choose() {
-
-        for (int i = 0; i < this.Options.length; i++) {
+        for (int i = 0; i <= this.Options.length; i++) {
+            System.out.print(this.Options[0][i]);
+            System.out.print("/");
+            System.out.print(Options[1][i]);
+            System.out.print("/");
             this.Options[2][i] = this.Options[0][i] / Options[1][i]; // populate the ratio row of the options table with
                                                                      // value to weight ratio
         }
 
         // sort options table using the ratio column in non-increasing order
-        Arrays.sort(Options, Comparator.comparingDouble(a -> a[2]));
-        double[] choices = new double[Options.length];
+        Arrays.sort(Options, Comparator.comparingDouble(row -> row[2]));
+        double[] choices = new double[Options[0].length];// set the size of the choices to the size of the rows of the
+                                                         // options table
+
+        for (double[] item : Options) {
+            for (double i : item) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
+
         double weight = 0;
         int j = 0;
         int k = 0;
 
-        while ((j < this.Options.length) && (weight < MaxWeight)) {
+        while ((j < this.Options[0].length) && (weight < MaxWeight)) {
             if (weight + this.Options[1][j] < MaxWeight) {
                 weight += this.Options[1][j];
                 choices[k] = this.Options[0][j]; // Add the value instead of the weight to choices
@@ -45,8 +57,7 @@ public class GreedyKnapSack {
         double[] choices = greedyKnapSack.choose();
 
         for (double choice : choices) {
-            System.out.println(choice);
+            System.out.println("Element with weight " + choice + " is chosen");
         }
-        System.out.println();
     }
 }
