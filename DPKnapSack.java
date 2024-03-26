@@ -33,9 +33,9 @@ class DPKnapSack {
     }
 
     public static void main(String[] args) {
-        int knapsack_Capacity = 50; // Weight capacity of knapsack
-        int[] item_values = { 60, 100, 120 }; // Values of each item
-        int[] item_weights = { 10, 20, 30 }; // Weights of each item
+        int knapsack_Capacity = 25; // Weight capacity of knapsack
+        int[] item_values = { 40, 30, 20, 10 }; // Values of each item
+        int[] item_weights = { 15, 10, 5, 2 }; // Weights of each item
 
         DPKnapSack knapsack = new DPKnapSack();
         int max_value = knapsack.choice(knapsack_Capacity, item_values, item_weights);

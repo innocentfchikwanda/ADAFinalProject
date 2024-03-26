@@ -30,16 +30,19 @@ public class GreedyKnapSack {
                                                             // the options table O(1)
         // Inserting chosen options into the knapsack
         double weight = 0;
+        double value = 0;
         int j = Options.length - 1;
         // iterate downwards since options are sorted in non-decreasing order
         while ((j >= 0) && (weight < MaxWeight)) {
             // O(n)
             if (weight + Options[j][2] <= MaxWeight) {
                 weight += Options[j][2];
+                value += Options[j][1];
                 choices.add(Options[j][0]); // Add the value instead of the weight to choices
             }
             j--;
         }
+        choices.add(value);
         return choices;
     }
 
@@ -68,9 +71,12 @@ public class GreedyKnapSack {
         }
 
         System.out.println("\nThis is the choice of elements in the first example");
+        int a = 0;
         for (double choice : knapSack1) {
-            System.out.println("Element " + (int) choice + " was chosen ");
+            if (++a < knapSack1.size())
+                System.out.println("Element " + (int) choice + " was chosen ");
         }
+        System.out.println("Maximum value: " + knapSack1.get(knapSack1.size() - 1));
 
         // Example 2
         // {{element, value, weight, v/w}}
@@ -92,9 +98,12 @@ public class GreedyKnapSack {
             System.out.println(Arrays.toString(opt));
         }
 
+        int b = 0;
         System.out.println("\nThis is the choice of elements in the second example");
         for (double choice : knapSack2) {
-            System.out.println("Element " + (int) choice + " was chosen ");
+            if (++b < knapSack2.size())
+                System.out.println("Element " + (int) choice + " was chosen ");
         }
+        System.out.println("Maximum value: " + knapSack2.get(knapSack2.size() - 1));
     }
 }
