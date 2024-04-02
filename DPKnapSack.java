@@ -32,6 +32,14 @@ class DPKnapSack {
         return table[n][knapsack_Capacity];
     }
 
+    public static String stringify(int[] l) {
+        String result = "";
+        for (int i = 0; i < l.length; i++) {
+            result = result + String.valueOf(l[i]) + " ";
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         int knapsack_Capacity = 25; // Weight capacity of knapsack
         int[] item_values = { 40, 30, 20, 10 }; // Values of each item
@@ -39,13 +47,18 @@ class DPKnapSack {
 
         DPKnapSack knapsack = new DPKnapSack();
         int max_value = knapsack.choice(knapsack_Capacity, item_values, item_weights);
-        System.out.println("Maximum value is " + max_value);
+        System.out.println("Knapsack 1 whith capacity " + knapsack_Capacity + " :\nweights: " + stringify(item_weights)
+                + "\nvalues : " + stringify(item_values)
+                + "\nMaximum value: " + max_value);
 
         int knapsack_Capacity2 = 15; // Weight capacity of knapsack
         int[] item_values2 = { 5, 21, 10, 40 }; // Values of each item
         int[] item_weights2 = { 2, 3, 10, 8 }; // Weights of each item
 
         int max_value2 = knapsack.choice(knapsack_Capacity2, item_values2, item_weights2);
-        System.out.println("Maximum value is " + max_value2);
+        System.out.println("Knapsack 2 whith capacity " + knapsack_Capacity2 + " :\nweights: "
+                + stringify(item_weights2) + "\nvalues : " + stringify(item_values2)
+                + "\nMaximum value: " + max_value2);
+
     }
 }
